@@ -9,8 +9,10 @@ const burger = (props) => {
   // For each key (k) which is an ingredient type:
   //   .map over an Array having a length matching the count of that ingredient (values, undefined!)
   //   Because values of the array are undefined, so we don't care about the values, only the index i
-  //   Finally output the JSX component with a key prop having its type plus the index for uniquness
+  //   Output the JSX component with a key prop having its type plus the index for uniquness
   //   and its type prop = k.
+  //
+  //   This is an array of arrays, so flatten it with .reduce() so we can easily see if it is empty.
   //
   // ingredients: {
   //     salad: 1,
@@ -29,11 +31,27 @@ const burger = (props) => {
   // <BurgerIngredient key="meat0" type="meat" />
   // <BurgerIngredient key="meat1" type="meat" />
 
-  const transformedIngredients = Object.keys(props.ingredients).map((k) => {
-    return [...Array(props.ingredients[k])].map((dontCare, i) => {
-      return <BurgerIngredient key={k + i} type={k} />;
+  let transformedIngredients = Object.keys(props.ingredients)
+    .map((k) => {
+      return [...Array(props.ingredients[k])].map((dontCare, i) => {
+        return <BurgerIngredient key={k + i} type={k} />;
+      });
+    })
+    .reduce((arr, el) => {
+      return arr.concat(el);
     });
-  });
+
+  // console.log(transformedIngredients);
+
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = (
+      <p>
+        This sure is a lean burger!
+        <br />
+        Try adding some ingredients.
+      </p>
+    );
+  }
 
   return (
     <div className={classes.Burger}>
