@@ -23,6 +23,9 @@ const buildControls = (props) => (
         enabled={props.enabled[ctrl.type]}
       />
     ))}
+    <button className={classes.OrderButton} disabled={!props.purchaseable}>
+      Checkout
+    </button>
   </div>
 );
 
