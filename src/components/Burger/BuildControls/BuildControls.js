@@ -1,12 +1,13 @@
 import React from "react";
 import BuildControl from "./BuildControl/BuildControl";
 import classes from "./BuildControls.module.css";
+import INGREDIENTS from "../Ingredients";
 
 const controls = [
-  { label: "Lettuce", type: "salad" },
-  { label: "Bacon", type: "bacon" },
-  { label: "Cheese", type: "cheese" },
-  { label: "Patty", type: "meat" },
+  { label: INGREDIENTS["salad"].label, type: "salad" },
+  { label: INGREDIENTS["bacon"].label, type: "bacon" },
+  { label: INGREDIENTS["cheese"].label, type: "cheese" },
+  { label: INGREDIENTS["meat"].label, type: "meat" },
 ];
 
 const buildControls = (props) => (

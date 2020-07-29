@@ -4,13 +4,7 @@ import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/ui/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
-
-const INGREDIENT_PRICES = {
-  salad: 0.25,
-  bacon: 0.95,
-  cheese: 0.45,
-  meat: 1.5,
-};
+import INGREDIENTS from "../../components/Burger/Ingredients";
 
 class BurgerBuilder extends Component {
   state = {
@@ -39,7 +33,7 @@ class BurgerBuilder extends Component {
   addIngredientHandler = (type) => {
     this.setState((prevState) => {
       const newIngredients = { ...prevState.ingredients };
-      const newPrice = prevState.totalPrice + INGREDIENT_PRICES[type];
+      const newPrice = prevState.totalPrice + INGREDIENTS[type].price;
       newIngredients[type]++;
       const newState = { ingredients: newIngredients, totalPrice: newPrice };
       return newState;
@@ -54,7 +48,7 @@ class BurgerBuilder extends Component {
 
     this.setState((prevState) => {
       const newIngredients = { ...prevState.ingredients };
-      const newPrice = prevState.totalPrice - INGREDIENT_PRICES[type];
+      const newPrice = prevState.totalPrice - INGREDIENTS[type].price;
       newIngredients[type]--;
       const newState = { ingredients: newIngredients, totalPrice: newPrice };
       return newState;

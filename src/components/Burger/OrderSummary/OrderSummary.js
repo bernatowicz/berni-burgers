@@ -1,12 +1,12 @@
 import React from "react";
 import Aux from "../../../hoc/Aux";
+import INGREDIENTS from "../Ingredients";
 
 const orderSummary = (props) => {
   const summaryList = Object.keys(props.ingredients).map((key, i) => {
     return (
       <li key={key}>
-        <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
-        {props.ingredients[key]}
+        {INGREDIENTS[key].label}:{props.ingredients[key]}
       </li>
     );
   });
