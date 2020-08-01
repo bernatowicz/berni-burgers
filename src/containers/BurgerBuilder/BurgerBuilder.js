@@ -69,7 +69,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    alert("You continued!");
+    alert("That looks tasty!\n\nThank you for your order!");
   };
 
   render() {
@@ -86,6 +86,7 @@ class BurgerBuilder extends Component {
         >
           <OrderSummary
             ingredients={this.state.ingredients}
+            price={this.state.totalPrice}
             cancelHandler={this.purchaseCancelHandler}
             continueHandler={this.purchaseContinueHandler}
           />

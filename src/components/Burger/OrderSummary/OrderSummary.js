@@ -4,7 +4,7 @@ import INGREDIENTS from "../Ingredients";
 import Button from "../../ui/Button/Button";
 
 const orderSummary = (props) => {
-  const summaryList = Object.keys(props.ingredients).map((key, i) => {
+  const ingedientSummary = Object.keys(props.ingredients).map((key, i) => {
     return (
       <li key={key}>
         {INGREDIENTS[key].label}:{props.ingredients[key]}
@@ -16,7 +16,10 @@ const orderSummary = (props) => {
     <Aux>
       <h3>Your Order</h3>
       <p>A delicious burger with the following ingredients:</p>
-      <ul>{summaryList}</ul>
+      <ul>{ingedientSummary}</ul>
+      <p>
+        <strong>Total Price: {props.price.toFixed(2)}</strong>
+      </p>
       <p>Continue to checkout?</p>
       <Button buttonType="Danger" clickHandler={props.cancelHandler}>
         CANCEL
